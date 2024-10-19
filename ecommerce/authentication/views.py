@@ -9,12 +9,16 @@ from django.contrib import messages
 def signup(request):
     if request.method == 'POST':
         # Get the user information from the form
-        username = request.POST['username']
-        email = request.POST['email']
-        password1 = request.POST['password1']
-        password2 = request.POST['password2']
+        username = request.POST.get('username', '')
+        email = request.POST.get('email', '')
+        password1 = request.POST.get('password1', '')
+        password2 = request.POST.get('password2', '')
         
         # Basic validation checks
+        if not username or not email or not password1 or not password2:
+            messages.error(request, "All fields are required.")
+            return redirect('signup')
+        
         if password1 != password2:
             messages.error(request, "Passwords do not match.")
             return redirect('signup')
@@ -26,10 +30,14 @@ def signup(request):
             return redirect('signup')
         
         # Create the user
-        user = User.objects.create_user(username=username, email=email, password=password1)
-        user.save()
-        messages.success(request, "Your account has been created successfully.")
-        return redirect('handlelogin')
+        try:
+            user = User.objects.create_user(username=username, email=email, password=password1)
+            user.save()
+            messages.success(request, "Your account has been created successfully.")
+            return redirect('handlelogin')
+        except Exception as e:
+            messages.error(request, f"An error occurred: {e}")
+            return redirect('signup')
     
     return render(request, 'signup.html')
 

@@ -1,1 +1,27 @@
-{% extends "baseauth.html" %}
+<!-- signup.html -->
+{% extends "base.html" %}
+
+{% block title %}Sign Up{% endblock title %}
+
+{% block content %}
+<div class="project-signup-wrapper container">
+    <div class="project-signup-container">
+        <h2 class="project-signup-title">Sign Up</h2>
+        <form class="project-signup-form" action="/signup/" method="POST"> {% csrf_token %}
+            <label for="project-userid" class="project-signup-label">Email:</label>
+            <input type="email" id="project-userid" name="userid" class="project-signup-input" required>
+
+            <label for="project-password" class="project-signup-label">Password:</label>
+            <input type="password" id="project-password" name="password" class="project-signup-input" required>
+
+            <label for="project-confirm-password" class="project-signup-label">Confirm Password:</label>
+            <input type="password" id="project-confirm-password" name="confirm-password" class="project-signup-input" required>
+
+            <button type="submit" class="project-signup-button">Sign In</button>
+        </form>
+        <p class="project-signin-option">
+            Already a user? <a href="login/" class="project-signin-link"> Login</a>
+        </p>
+    </div>
+</div>
+{% endblock content %}

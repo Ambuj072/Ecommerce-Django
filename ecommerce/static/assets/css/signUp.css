@@ -8,7 +8,7 @@
 }
 
 .project-signup-container {
-    background-color: #434475;
+    background-color: #232327;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -39,7 +39,7 @@
 }
 
 .project-signup-button {
-    background-color: #4CAF50;
+    background-color: #8c2f2f;
     color: white;
     padding: 10px;
     border: none;
@@ -50,7 +50,7 @@
 }
 
 .project-signup-button:hover {
-    background-color: #45a049;
+    background-color: #a32727;
 }
 
 .project-signin-option {
@@ -58,7 +58,7 @@
 }
 
 .project-signin-link {
-    color: #007BFF;
+    color: #9e392d;
     text-decoration: none;
 }
 

@@ -3,9 +3,14 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.http import HttpResponse
 
 
 # Create your views here.
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from django.contrib import messages
+
 def signup(request):
     if request.method == 'POST':
         # Get the user information from the form
@@ -13,34 +18,28 @@ def signup(request):
         email = request.POST.get('email', '')
         password1 = request.POST.get('password1', '')
         password2 = request.POST.get('password2', '')
-        
+
         # Basic validation checks
-        if not username or not email or not password1 or not password2:
-            messages.error(request, "All fields are required.")
-            return redirect('signup')
-        
         if password1 != password2:
             messages.error(request, "Passwords do not match.")
             return redirect('signup')
-        if User.objects.filter(username=username).exists():
-            messages.error(request, "Username already exists.")
-            return redirect('signup')
-        if User.objects.filter(email=email).exists():
-            messages.error(request, "Email already in use.")
+        
+        # Check if the user already exists
+        if User.objects.filter(username=email).exists():
+            messages.error(request, "User already exists.")
             return redirect('signup')
         
         # Create the user
         try:
-            user = User.objects.create_user(username=username, email=email, password=password1)
+            user = User.objects.create_user(username=email, email=email, password=password1)
             user.save()
-            messages.success(request, "Your account has been created successfully.")
-            return redirect('handlelogin')
+            messages.success(request, "User created successfully.")
+            return redirect("login")
         except Exception as e:
-            messages.error(request, f"An error occurred: {e}")
+            messages.error(request, f"An error occurred: {str(e)}")
             return redirect('signup')
-    
-    return render(request, 'signup.html')
 
+    return render(request, 'signup.html')
 
 def handlelogin(request):
     if request.method == 'POST':

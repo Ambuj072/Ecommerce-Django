@@ -31,7 +31,7 @@
 
   <!-- Main CSS File -->
   <link href="{%static '/assets/css/main.css'%}" rel="stylesheet">
-  <link href="{% static 'assets/css/signUp.css' %}" rel="stylesheet">
+  <link href="{% static '/assets/css/signUp.css' %}" rel="stylesheet">
 
 </head>
 
@@ -55,20 +55,20 @@
           <li><a href="/about">My Profile</a></li>
 
           {% if request.user.is_authenticated  %}
-          <li><a href="logout/">Logout</a></li>
+          <li><a href="/logout/">Logout</a></li>
           
           {% else %}
           <li class="dropdown"><a href=""><span>Sign in</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="signup/">Sign Up</a></li>
-              <li><a href="login/">Login</a></li>        
+              <li><a href="/signup/">Sign Up</a></li>
+              <li><a href="/login/">Login</a></li>        
             </ul>
           </li>
           {% endif %}
 
          
-          <li><a class="bg-danger p-3 m-2" href="/contact">Cart</a></li>
-          <li><a class="bg-dark p-3 m-2" href="/contact">Contact</a></li>
+          <li><a class="bg-danger p-3 m-2" href="/contact/">Cart</a></li>
+          <li><a class="bg-dark p-3 m-2" href="/contact/">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>

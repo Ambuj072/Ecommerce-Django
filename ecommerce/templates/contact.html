@@ -1,6 +1,30 @@
+<!-- signup.html -->
 {% extends "base.html" %}
 
-{% block title %} Contact Us{% endblock title %}
-{% block body %}
+{% block title %}contact us{% endblock title %}
 
-{% endblock body %}
+{% block content %}
+<div class="project-signup-wrapper container">
+    <div class="project-signup-container">
+        <h2 class="project-signup-title">contact us</h2>
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            <strong>{{ message }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        <form class="project-signup-form" action="/contact/" method="POST">
+            {% csrf_token %}
+            <label for="project-email" class="project-signup-label">Name</label>
+            <input type="name" id="name" name="name" class="project-signup-input" required>
+            <label for="project-email" class="project-signup-label">Email</label>
+            <input type="email" id="email" name="email" class="project-signup-input" required>
+
+            <label for="project-password" class="project-signup-label">How Can I Help You</label>
+            <textarea type="text" id="desc" name="desc" class="project-signup-input" required></textarea>
+            <button type="submit" class="project-signup-button">submit</button>
+        </form>
+        </p>
+    </div>
+</div>
+{% endblock content %}

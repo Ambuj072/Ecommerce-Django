@@ -53,7 +53,7 @@ def handlelogin(request):
         if user is not None:
             login(request, user)
             messages.success(request, "You have successfully logged in.")
-            return redirect('home')  # Redirect to a home page or dashboard
+            return redirect('index.html')  # Redirect to a home page or dashboard
         else:
             messages.error(request, "Invalid username or password.")
             return redirect('handlelogin')

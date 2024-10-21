@@ -135,6 +135,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MESSAGE_TAGS={
     messages.ERROR:'danger'
 }
+# settings.py
+LOGIN_REDIRECT_URL = 'index'  # Use the name of your home page view or the path to redirect to
 
 #------------------=-------------
 #sending Email
@@ -147,3 +149,4 @@ MESSAGE_TAGS={
 # EMAIL_HOST_USER = 'your_email@example.com'  # Your email address
 # EMAIL_HOST_PASSWORD = 'your_email_password'  # Your email password
 # DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+

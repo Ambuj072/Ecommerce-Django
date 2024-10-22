@@ -72,17 +72,17 @@ Home
 
 <!-- Image Modal -->
 <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
-  <div class="modal-dialog " role="document">
-    <div class="modal-content">
+  <div class="modal-dialog modal-dialog-centered" role="document"> <!-- Centered modal -->
+    <div class="modal-content" style="width: auto; margin: auto;"> <!-- Auto width and center -->
       <div class="modal-header">
         <h5 class="modal-title" id="imageModalLabel">Product Image</h5>
         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" style="padding: 0;">
+      <div class="modal-body" style="padding: 0;"> <!-- Removed padding -->
         <!-- Make the image responsive and limit size -->
-        <img id="modalImage" src="" alt="Product Image" class="img-fluid" style="max-width: 50%; max-height: 300px;">
+        <img id="modalImage" src="" alt="Product Image" class="img-fluid" style="max-width: 100%; max-height: 500px;">
       </div>
     </div>
   </div>
